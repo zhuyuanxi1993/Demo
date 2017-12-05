@@ -19,7 +19,7 @@ public class DBTest {
     UserDAO userDAO;
     @Test
     public void contextLoad(){
-       for(int i=0;i<10;i++){
+  /*     for(int i=0;i<10;i++){
             User user = new User();
             user.setHeadUrl(String.format("http://www.baidu.com/image"));
             user.setName(String.format("customer"+i));
@@ -27,6 +27,7 @@ public class DBTest {
             user.setSalt("");
             userDAO.addUser(user);
 
-       }
+       }*/
+    System.out.println(userDAO.findUserById(1).getName());
     }
 }
