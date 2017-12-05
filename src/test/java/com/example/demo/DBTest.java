@@ -22,7 +22,7 @@ public class DBTest {
        for(int i=0;i<10;i++){
             User user = new User();
             user.setHeadUrl(String.format("http://www.baidu.com/image"));
-            user.setName(String.format("customer"));
+            user.setName(String.format("customer"+i));
             user.setPassword("");
             user.setSalt("");
             userDAO.addUser(user);
