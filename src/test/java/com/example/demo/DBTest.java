@@ -28,6 +28,6 @@ public class DBTest {
             userDAO.addUser(user);
 
        }*/
-    System.out.println(userDAO.findUserById(1).getName());
+    System.out.println(userDAO.selectById(1).getHeadUrl());
     }
 }
