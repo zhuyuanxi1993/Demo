@@ -25,6 +25,7 @@ public class HomeController {
     UserService userService;
 
     @RequestMapping(path = {"/","/index"},method = {RequestMethod.GET,RequestMethod.POST})
+    @ResponseBody
     public String index(Model model){
         List<News> newsList = newsService.getLatestNews(0,0,10);
         List<ViewObject> vos = new ArrayList<>();
@@ -35,6 +36,7 @@ public class HomeController {
             vos.add(vo);
         }
         model.addAttribute("vos",vos);
-        return "/home.html";
+        return model.toString();
     }
+
 }

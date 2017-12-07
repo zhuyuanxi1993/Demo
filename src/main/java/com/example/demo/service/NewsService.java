@@ -15,6 +15,6 @@ public class NewsService {
     private NewsDAO newsDAO;
 
     public List<News> getLatestNews(int userId,int offset,int limit){
-        return newsDAO.selectByUserIdAndOffset(userId,offset,limit);
+        return newsDAO.select(userId,offset,limit);
     }
 }
