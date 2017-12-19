@@ -18,20 +18,23 @@ public class UserService {
 
     public Map<String,Object> register(String username, String password){
         Map<String,Object> map = new HashMap<String,Object>();
-        if(StringUtils.isEmpty(username)){
+        if(username == null){
             map.put("msgname","username can't be null");
         }
-        if(StringUtils.isEmpty(password)){
+        if(password == null){
             map.put("msgpassword","password can't be null");
         }
 
-        User user = new User();
+        User user = userDAO.selectByName(username);
+        if(user != null){
+            map.put("msgname","has been register");
+        }
+        user = new User();
         user.setName(username);
         user.setSalt(UUID.randomUUID().toString().substring(0,5));
         user.setHeadUrl(String.format("http://wwww.dsad.sad"));
         user.setPassword(ToutiaoUtil.MD5(password+user.getSalt()));
         userDAO.addUser(user);
-
         //登录
 
         return map;

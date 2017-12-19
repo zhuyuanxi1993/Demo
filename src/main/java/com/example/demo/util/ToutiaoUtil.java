@@ -1,12 +1,29 @@
 package com.example.demo.util;
 
 
-import java.security.MessageDigest;
 
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.security.MessageDigest;
 /**
  * Created by nowcoder on 2016/7/3.
  */
 public class ToutiaoUtil {
+
+    public static String getJSONString(int code) throws JSONException {
+        JSONObject json = new JSONObject();
+        json.put("code", code);
+        return json.toString();
+    }
+
+    public static String getJSONString(int code, String msg) throws JSONException {
+        JSONObject json = new JSONObject();
+        json.put("code", code);
+        json.put("msg", msg);
+        return json.toString();
+    }
 
     public static String MD5(String key) {
         char hexDigits[] = {
