@@ -3,26 +3,37 @@ package com.example.demo.util;
 
 
 
-import org.json.JSONException;
-import org.json.JSONObject;
+
+import com.alibaba.fastjson.JSONObject;
 
 import java.security.MessageDigest;
+import java.util.Map;
+
 /**
  * Created by nowcoder on 2016/7/3.
  */
 public class ToutiaoUtil {
 
-    public static String getJSONString(int code) throws JSONException {
+    public static String getJSONString(int code) {
         JSONObject json = new JSONObject();
         json.put("code", code);
-        return json.toString();
+        return json.toJSONString();
     }
 
-    public static String getJSONString(int code, String msg) throws JSONException {
+    public static String getJSONString(int code, String msg){
         JSONObject json = new JSONObject();
         json.put("code", code);
         json.put("msg", msg);
-        return json.toString();
+        return json.toJSONString();
+    }
+
+    public static String getJSONString(int code, Map<String, Object> map) {
+        JSONObject json = new JSONObject();
+        json.put("code", code);
+        for (Map.Entry<String, Object> entry : map.entrySet()) {
+            json.put(entry.getKey(), entry.getValue());
+        }
+        return json.toJSONString();
     }
 
     public static String MD5(String key) {

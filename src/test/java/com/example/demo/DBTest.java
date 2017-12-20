@@ -1,7 +1,9 @@
 package com.example.demo;
 
+import com.example.demo.dao.LoginTicketDAO;
 import com.example.demo.dao.NewsDAO;
 import com.example.demo.dao.UserDAO;
+import com.example.demo.model.LoginTicket;
 import com.example.demo.model.News;
 import com.example.demo.model.User;
 import org.junit.Test;
@@ -12,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
+import sun.security.krb5.internal.Ticket;
 
 import java.util.Date;
 
@@ -23,18 +26,26 @@ public class DBTest {
     UserDAO userDAO;
     @Autowired
     NewsDAO newsDAO;
+    @Autowired
+    LoginTicketDAO loginTicketDAO;
     @Test
     public void contextLoad(){
-  /*     for(int i=0;i<10;i++){
+       for(int i=0;i<10;i++){
             User user = new User();
             user.setHeadUrl(String.format("http://www.baidu.com/image"));
             user.setName(String.format("customer"+i));
             user.setPassword("");
             user.setSalt("");
             userDAO.addUser(user);
+           LoginTicket loginTicket = new LoginTicket();
+           loginTicket.setStatus(0);
+           loginTicket.setUserId(i);
+           loginTicket.setExpired(new Date());
+           loginTicket.setTicket(String.format("TICKET%d",i));
+           loginTicketDAO.addTicket(loginTicket);
 
-       }*/
-//    System.out.println(userDAO.selectById(1).getName());
+       }
+
         for (int i = 0;i<10;i++) {
             News news = new News();
             news.setCommentCount(i);
@@ -48,5 +59,7 @@ public class DBTest {
             news.setLink(String.format("http://wewewe"+i));
             newsDAO.addNews(news);
         }
+
+
     }
 }
